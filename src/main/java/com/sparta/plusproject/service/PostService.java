@@ -6,6 +6,7 @@ import com.sparta.plusproject.repository.PostRepository;
 import com.sparta.plusproject.repository.UserRepository;
 import com.sparta.plusproject.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class PostService {
 
     public List<PostResponseDto> getPostList(UserDetailsImpl userDetails) {
 
-        List<Post> postList = postRepository.findAll();
+        List<Post> postList = postRepository.findAll(Sort.by(Sort.Direction.DESC, "createDate"));
         List<PostResponseDto> response = new ArrayList<>();
         for (int i = 0; i < postList.size(); i++) {
             response.add(new PostResponseDto(postList.get(i),userDetails));
