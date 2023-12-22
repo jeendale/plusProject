@@ -51,6 +51,7 @@ public class WebSecurityConfig {
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() // resources 접근 허용 설정
                         .requestMatchers("/v1/users/**").permitAll() // '/v1/users/'로 시작하는 요청 모두 접근 허가
                         .requestMatchers(HttpMethod.POST,"/v1/posts/**").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/v1/comments/**").permitAll()
                         .anyRequest().authenticated() // 그 외 모든 요청 인증처리
         );
 
