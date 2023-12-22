@@ -1,6 +1,7 @@
 package com.sparta.plusproject.dto;
 
 import com.sparta.plusproject.entity.Post;
+import com.sparta.plusproject.security.UserDetailsImpl;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -12,12 +13,14 @@ public class PostResponseDto extends CommonResponseDto {
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
-    public PostResponseDto(Post savePost) {
+    private String nickname;
+    public PostResponseDto(Post savePost, UserDetailsImpl userDetails) {
         this.id = savePost.getId();
         this.title = savePost.getTitle();
         this.content = savePost.getContent();
         this.createdAt = savePost.getCreatedAt();
         this.modifiedAt = savePost.getModifiedAt();
+        this.nickname=userDetails.getNickname();
     }
 
 }
