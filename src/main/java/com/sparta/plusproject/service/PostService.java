@@ -22,7 +22,7 @@ public class PostService {
 
     public List<PostResponseDto> getPostList(UserDetailsImpl userDetails) {
 
-        List<Post> postList = postRepository.findAll(Sort.by(Sort.Direction.DESC, "createDate"));
+        List<Post> postList = postRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
         List<PostResponseDto> response = new ArrayList<>();
         for (int i = 0; i < postList.size(); i++) {
             response.add(new PostResponseDto(postList.get(i),userDetails));
