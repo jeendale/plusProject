@@ -17,9 +17,9 @@ public class Post extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false,length = 500)
     private String title;
-    @Column(nullable = false)
+    @Column(nullable = false,length = 5000)
     private String content;
 
     @ManyToOne
@@ -36,4 +36,5 @@ public class Post extends Timestamped {
         this.title = requestDto.getTitle()==null ? this.title : requestDto.getTitle();
         this.content = requestDto.getContent()==null ? this.content : requestDto.getContent();
     }
+
 }
