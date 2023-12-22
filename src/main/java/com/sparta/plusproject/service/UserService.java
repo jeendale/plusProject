@@ -20,6 +20,9 @@ public class UserService {
     public void signup(SignUpRequestDto requestDto) {
         String nickname=requestDto.getNickname();
         String password=passwordEncoder.encode(requestDto.getPassword());
+        if(!passwordEncoder.matches(requestDto.getCheckPassword(), password)){
+            throw new IllegalArgumentException("비밀번호 확인이 일치하지 않습니다.");
+        }
         if(userRepository.findByNickname(requestDto.getNickname()).isPresent()){
             throw new IllegalArgumentException("중복된 닉네임입니다.");
         }
